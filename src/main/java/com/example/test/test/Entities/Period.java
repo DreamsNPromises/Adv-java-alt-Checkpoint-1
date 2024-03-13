@@ -1,5 +1,6 @@
 package com.example.test.test.Entities;
 
+import com.example.test.test.Enums.SlotType;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -15,8 +16,8 @@ public class Period {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
-//    @Column(name = "slot_type", nullable = false)
-//    private SlotType slotType;
+    @Column(name = "slot_type", nullable = false)
+    private SlotType slotType;
 
     @Column(name = "begin_time", nullable = false)
     private LocalTime beginTime;
