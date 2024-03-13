@@ -6,7 +6,8 @@ import com.example.test.test.Services.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
@@ -16,12 +17,15 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public Employee createEmployee(Employee employee) {
+//        if (!EnumUtils.isValidEnum(EmployeeStatus.class, employee.getStatus().name())) {
+//            throw new InvalidEmployeeStatusException("Invalid employee status: " + employee.getStatus());
+//        }
         return employeeRepository.save(employee);
     }
 
     @Override
-    public List<Employee> getAll() {
-        return employeeRepository.findAll();
+    public Optional<Employee> getById(UUID id) {
+        return employeeRepository.findById(id);
     }
 
 }

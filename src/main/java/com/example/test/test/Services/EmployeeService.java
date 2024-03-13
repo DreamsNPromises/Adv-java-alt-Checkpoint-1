@@ -2,11 +2,12 @@ package com.example.test.test.Services;
 
 import com.example.test.test.Entities.Employee;
 
-import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 public interface EmployeeService {
 
     Employee createEmployee(Employee employee);
 
-    List<Employee> getAll();
+    Optional<Employee> getById(UUID id);
 }
