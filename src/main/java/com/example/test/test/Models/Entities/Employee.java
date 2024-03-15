@@ -1,17 +1,18 @@
-package com.example.test.test.Entities;
+package com.example.test.test.Models.Entities;
 
+import com.example.test.test.Models.Enums.EmployeePosition;
+import com.example.test.test.Models.Enums.EmployeeStatus;
 import com.example.test.test.Utils.UUIDConverter;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.time.LocalDateTime;
-import java.util.List;
 import java.util.UUID;
+
 
 @Entity
 @Data
-@Table(name = "schedules")
-public class Schedule {
+@Table(name = "employees")
+public class Employee {
 
     @Id
     private String id;
@@ -23,17 +24,13 @@ public class Schedule {
         //вероятность коллизии остается настолько ничтожно малой, что ей можно пренебречь.
         this.id = uuidConverter.convertToDatabaseColumn(UUID.randomUUID());
     }
-    @Column(name = "schedule_name")
+
+    @Column(name = "employee_name", nullable = false)
     private String name;
 
-    @Column(name = "creation_date", nullable = false)
-    private LocalDateTime creationDate;
+    @Column(name = "status", nullable = false)
+    private EmployeeStatus status;
 
-    // Связанные сущности
-    @OneToMany(mappedBy = "schedule")
-    private List<ScheduleTemplate> templates;
-
-    @OneToMany(mappedBy = "schedule")
-    private List<Period> periods;
-
+    @Column(name = "position", nullable = false)
+    private EmployeePosition position;
 }

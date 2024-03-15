@@ -1,6 +1,5 @@
-package com.example.test.test.Entities;
+package com.example.test.test.Models.Entities;
 
-import com.example.test.test.Enums.SlotType;
 import com.example.test.test.Utils.UUIDConverter;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -10,8 +9,8 @@ import java.util.UUID;
 
 @Entity
 @Data
-@Table(name = "periods")
-public class Period {
+@Table(name = "slots")
+public class Slot {
 
     @Id
     private String id;
@@ -24,9 +23,6 @@ public class Period {
         this.id = uuidConverter.convertToDatabaseColumn(UUID.randomUUID());
     }
 
-    @Column(name = "slot_type", nullable = false)
-    private SlotType slotType;
-
     @Column(name = "begin_time", nullable = false)
     private LocalTime beginTime;
 
@@ -35,18 +31,6 @@ public class Period {
 
     // Связанные сущности
     @ManyToOne
-    @JoinColumn(name = "slot_id", nullable = false)
-    private Slot slot;
-
-    @ManyToOne
-    @JoinColumn(name = "schedule_id", nullable = false)
-    private Schedule schedule;
-
-    @ManyToOne
-    @JoinColumn(name = "administrator_id", nullable = false)
-    private Employee administrator;
-
-    @ManyToOne
-    @JoinColumn(name = "executor_id")
-    private Employee executor;
+    @JoinColumn(name = "schedule_template_id", nullable = false)
+    private ScheduleTemplate template;
 }

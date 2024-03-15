@@ -1,4 +1,4 @@
-package com.example.test.test.Entities;
+package com.example.test.test.Models.Entities;
 
 import com.example.test.test.Utils.UUIDConverter;
 import jakarta.persistence.*;

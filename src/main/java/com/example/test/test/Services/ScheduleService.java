@@ -1,6 +1,6 @@
 package com.example.test.test.Services;
 
-import com.example.test.test.Entities.Schedule;
+import com.example.test.test.Models.Entities.Schedule;
 
 import java.util.UUID;
 

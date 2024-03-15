@@ -1,7 +1,6 @@
-package com.example.test.test.ServicesImpl;
+package com.example.test.test.Services.Implementations;
 
-import com.example.test.test.Entities.Employee;
-import com.example.test.test.Enums.EmployeeStatus;
+import com.example.test.test.Models.Entities.Employee;
 import com.example.test.test.ExceptionsHandling.Exceptions.NotFoundException;
 import com.example.test.test.Repositories.EmployeeRepository;
 import com.example.test.test.Services.EmployeeService;

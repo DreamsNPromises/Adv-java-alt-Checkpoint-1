@@ -1,10 +1,6 @@
 package com.example.test.test.Services;
 
-import com.example.test.test.Entities.Period;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-
-import java.util.List;
+import com.example.test.test.Models.Entities.Period;
 
 public interface PeriodService {
 

@@ -1,4 +1,4 @@
-package com.example.test.test.Enums;
+package com.example.test.test.Models.Enums;
 
 public enum SortDirection {
 

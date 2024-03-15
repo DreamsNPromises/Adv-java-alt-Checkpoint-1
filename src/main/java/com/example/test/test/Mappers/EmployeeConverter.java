@@ -1,7 +1,7 @@
 package com.example.test.test.Mappers;
 
-import com.example.test.test.DTOs.EmployeeDTO;
-import com.example.test.test.Entities.Employee;
+import com.example.test.test.Models.DTOs.EmployeeDTO;
+import com.example.test.test.Models.Entities.Employee;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 

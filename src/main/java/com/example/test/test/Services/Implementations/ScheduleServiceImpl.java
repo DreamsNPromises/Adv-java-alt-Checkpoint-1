@@ -1,6 +1,6 @@
-package com.example.test.test.ServicesImpl;
+package com.example.test.test.Services.Implementations;
 
-import com.example.test.test.Entities.Schedule;
+import com.example.test.test.Models.Entities.Schedule;
 import com.example.test.test.Repositories.PeriodRepository;
 import com.example.test.test.Repositories.ScheduleRepository;
 import com.example.test.test.Services.ScheduleService;
