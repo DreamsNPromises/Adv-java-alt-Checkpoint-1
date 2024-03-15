@@ -1,23 +1,24 @@
-package com.example.test.test.Repositories;
+package com.example.test.test.Repositories.Implementations;
 
 import com.example.test.test.Models.Entities.Period;
+import com.example.test.test.Repositories.PeriodRepository;
+import com.example.test.test.Models.DTOs.PeriodFilter;
 import com.example.test.test.Models.DTOs.PeriodSort;
 import jakarta.annotation.Nullable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.web.PageableDefault;
 
-import java.util.UUID;
+public class PeriodRepositoryImpl implements PeriodRepository {
 
-public interface PeriodRepository extends JpaRepository<Period, UUID> {
-
+    @Override
     public Page<Period> findAll(
-//            @Nullable Specification<Period> filter,
-//            @Nullable Specification<PeriodSort> sort,
+//            @Nullable PeriodFilter filter,
+//            @Nullable PeriodSort sort,
             @PageableDefault(size = 20) Pageable pageable
-    );
+    ) {
 
-    //List<Period> findAll(PeriodFilter filter, SortField sort, Pageable pageable);
+    }
 }
