@@ -2,6 +2,7 @@ package com.example.test.test.Entities;
 
 import com.example.test.test.Enums.EmployeePosition;
 import com.example.test.test.Enums.EmployeeStatus;
+import com.example.test.test.Utils.UUIDConverter;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -14,8 +15,15 @@ import java.util.UUID;
 public class Employee {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
+    private String id;
+
+    @PrePersist
+    public void prePersist() {
+        UUIDConverter uuidConverter = new UUIDConverter();
+        //На практике это означает, что даже при генерации миллиардов UUID в секунду
+        //вероятность коллизии остается настолько ничтожно малой, что ей можно пренебречь.
+        this.id = uuidConverter.convertToDatabaseColumn(UUID.randomUUID());
+    }
 
     @Column(name = "employee_name", nullable = false)
     private String name;
