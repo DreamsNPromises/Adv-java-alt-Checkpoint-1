@@ -1,6 +1,8 @@
 package com.example.test.test.ServicesImpl;
 
 import com.example.test.test.Entities.Employee;
+import com.example.test.test.Enums.EmployeeStatus;
+import com.example.test.test.ExceptionsHandling.Exceptions.NotFoundException;
 import com.example.test.test.Repositories.EmployeeRepository;
 import com.example.test.test.Services.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +26,13 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public Optional<Employee> getById(UUID id) {
-        return employeeRepository.findById(id);
+    public Employee getById(UUID id) throws NotFoundException {
+        Optional<Employee> employee = employeeRepository.findById(id);
+        if(employee.isPresent()){
+            return employee.get();
+        }else{
+            throw new NotFoundException("Employee not found with id : " + id);
+        }
     }
 
 }
