@@ -12,21 +12,21 @@ import org.springframework.web.bind.annotation.*;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/api/employees")
+@RequestMapping("/api/employee")
 public class EmployeeController {
 
     @Autowired
     private EmployeeServiceImpl employeeService;
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Employee> getEmployeeById(@PathVariable UUID id) throws NotFoundException {
-        return ResponseEntity.ok(employeeService.getById(id));
-    }
-
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
     public Employee createEmployee(@RequestBody @Validated Employee employee) {
         return employeeService.createEmployee(employee);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Employee> getEmployeeById(@PathVariable UUID id) throws NotFoundException {
+        return ResponseEntity.ok(employeeService.getById(id));
     }
 
 }

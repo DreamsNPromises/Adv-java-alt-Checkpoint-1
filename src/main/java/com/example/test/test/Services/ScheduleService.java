@@ -10,8 +10,6 @@ public interface ScheduleService {
 
     Schedule getScheduleById(UUID id);
 
-    Schedule getScheduleByName(String name);
-
     //List<Period> getPeriods(PeriodFilter filter, Sort sort, Pageable pageable);
 
 }

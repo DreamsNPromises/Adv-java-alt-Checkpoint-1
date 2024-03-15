@@ -18,9 +18,6 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public Employee createEmployee(Employee employee) {
-//        if (!EnumUtils.isValidEnum(EmployeeStatus.class, employee.getStatus().name())) {
-//            throw new InvalidEmployeeStatusException("Invalid employee status: " + employee.getStatus());
-//        }
         return employeeRepository.save(employee);
     }
 

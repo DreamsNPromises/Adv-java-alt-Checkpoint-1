@@ -37,12 +37,6 @@ public class ScheduleServiceImpl implements ScheduleService {
         return optionalSchedule.orElse(null);
     }
 
-    @Override
-    public Schedule getScheduleByName(String name) {
-        List<Schedule> schedules = scheduleRepository.findByName(name);
-        return schedules.isEmpty() ? null : schedules.get(0);
-    }
-
 //    @Override
 //    public List<Period> getPeriods(PeriodFilter filter, Sort sort, Pageable pageable) {
 //        return periodRepository.findAll(filter, sort, pageable);

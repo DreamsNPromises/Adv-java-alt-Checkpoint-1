@@ -11,14 +11,14 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.web.PageableDefault;
 
-public class PeriodRepositoryImpl implements PeriodRepository {
-
-    @Override
-    public Page<Period> findAll(
-//            @Nullable PeriodFilter filter,
-//            @Nullable PeriodSort sort,
-            @PageableDefault(size = 20) Pageable pageable
-    ) {
-
-    }
-}
+//public class PeriodRepositoryImpl implements PeriodRepository {
+//
+//    @Override
+//    public Page<Period> findAll(
+////            @Nullable PeriodFilter filter,
+////            @Nullable PeriodSort sort,
+//            @PageableDefault(size = 20) Pageable pageable
+//    ) {
+//
+//    }
+//}
