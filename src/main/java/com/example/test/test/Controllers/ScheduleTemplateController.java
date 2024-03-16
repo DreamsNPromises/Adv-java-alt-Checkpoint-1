@@ -23,7 +23,7 @@ public class ScheduleTemplateController {
 
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
-    public ScheduleTemplate createTemplate(@RequestBody @Validated ScheduleTemplate scheduleTemplate) {
+    public ScheduleTemplate createTemplate(@RequestBody ScheduleTemplate scheduleTemplate) {
         return scheduleTemplateService.createTemplate(scheduleTemplate);
     }
 

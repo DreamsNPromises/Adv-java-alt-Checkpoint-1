@@ -18,12 +18,15 @@ public class Period {
 
     @PrePersist
     public void prePersist() {
-        UUIDConverter uuidConverter = new UUIDConverter();
-        //На практике это означает, что даже при генерации миллиардов UUID в секунду
-        //вероятность коллизии остается настолько ничтожно малой, что ей можно пренебречь.
-        this.id = uuidConverter.convertToDatabaseColumn(UUID.randomUUID());
+        if (this.id == null) {
+            UUIDConverter uuidConverter = new UUIDConverter();
+            //На практике это означает, что даже при генерации миллиардов UUID в секунду
+            //вероятность коллизии остается настолько ничтожно малой, что ей можно пренебречь.
+            this.id = uuidConverter.convertToDatabaseColumn(UUID.randomUUID());
+        }
     }
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "slot_type", nullable = false)
     private SlotType slotType;
 

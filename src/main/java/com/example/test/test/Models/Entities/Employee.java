@@ -19,18 +19,22 @@ public class Employee {
 
     @PrePersist
     public void prePersist() {
-        UUIDConverter uuidConverter = new UUIDConverter();
-        //На практике это означает, что даже при генерации миллиардов UUID в секунду
-        //вероятность коллизии остается настолько ничтожно малой, что ей можно пренебречь.
-        this.id = uuidConverter.convertToDatabaseColumn(UUID.randomUUID());
+        if (this.id == null) {
+            UUIDConverter uuidConverter = new UUIDConverter();
+            //На практике это означает, что даже при генерации миллиардов UUID в секунду
+            //вероятность коллизии остается настолько ничтожно малой, что ей можно пренебречь.
+            this.id = uuidConverter.convertToDatabaseColumn(UUID.randomUUID());
+        }
     }
 
     @Column(name = "employee_name", nullable = false)
     private String name;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false)
     private EmployeeStatus status;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "position", nullable = false)
     private EmployeePosition position;
 }

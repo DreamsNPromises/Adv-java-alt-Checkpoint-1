@@ -7,8 +7,11 @@ import com.example.test.test.Repositories.PeriodRepository;
 import com.example.test.test.Repositories.SlotRepository;
 import com.example.test.test.Services.PeriodService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -31,6 +34,15 @@ public class PeriodServiceImpl implements PeriodService {
         }else{
             throw new NotFoundException("Period not found with id : " + id);
         }
+    }
+
+    @Override
+    public Page<Period> getAll(
+        Pageable pageable
+    ) {
+        Page<Period> page = periodRepository.findAll(pageable);
+
+        return periodRepository.findAll(pageable);
     }
 
 }

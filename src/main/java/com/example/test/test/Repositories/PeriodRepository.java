@@ -5,7 +5,6 @@ import com.example.test.test.Models.DTOs.PeriodSort;
 import jakarta.annotation.Nullable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.web.PageableDefault;
 
@@ -14,8 +13,6 @@ import java.util.UUID;
 public interface PeriodRepository extends JpaRepository<Period, UUID> {
 
     public Page<Period> findAll(
-//            @Nullable Specification<Period> filter,
-//            @Nullable Specification<PeriodSort> sort,
             @PageableDefault(size = 20) Pageable pageable
     );
 
