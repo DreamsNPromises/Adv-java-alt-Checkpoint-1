@@ -14,4 +14,16 @@ public enum SlotType {
     public String getLabel() {
         return label;
     }
+
+    public static SlotType validateSlotType(String slotType) {
+        if (slotType == null) {
+            return null;
+        }
+
+        try {
+            return valueOf(slotType.toUpperCase());
+        } catch (IllegalArgumentException e) {
+            return null;
+        }
+    }
 }

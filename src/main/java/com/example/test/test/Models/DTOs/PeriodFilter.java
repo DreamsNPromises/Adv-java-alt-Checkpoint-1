@@ -12,6 +12,4 @@ public class PeriodFilter {
     private SlotType slotType;
     private String administratorId;
     private String executorId;
-
-    // Getters and setters
 }

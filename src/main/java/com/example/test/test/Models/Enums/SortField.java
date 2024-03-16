@@ -1,5 +1,8 @@
 package com.example.test.test.Models.Enums;
 
+import lombok.Getter;
+
+@Getter
 public enum SortField {
 
     BEGIN_TIME,
