@@ -14,7 +14,6 @@ import java.util.Objects;
 @RestControllerAdvice
 public class ApplicationExceptionHandler {
 
-
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public Map<String, String> handleInvalidArgument(MethodArgumentNotValidException ex) {
@@ -29,7 +28,7 @@ public class ApplicationExceptionHandler {
     @ExceptionHandler(NotFoundException.class)
     public Map<String, Object> handleBusinessException(NotFoundException ex) {
         Map<String, Object> errorMap = new HashMap<>();
-        errorMap.put("status", HttpStatus.NOT_FOUND.value());  // Добавьте статус
+        errorMap.put("status", HttpStatus.NOT_FOUND.value());
         errorMap.put("message", ex.getMessage());
         return errorMap;
     }

@@ -58,11 +58,11 @@ public class PeriodServiceImpl implements PeriodService {
             }
             if (filter.getSlotId() != null) {
                 specificationPredicates.add((root, query, criteriaBuilder) ->
-                        criteriaBuilder.equal(root.get("slot.id"), filter.getSlotId()));
+                        criteriaBuilder.equal(root.get("slot").get("id"), filter.getSlotId()));
             }
             if (filter.getScheduleId() != null) {
                 specificationPredicates.add((root, query, criteriaBuilder) ->
-                        criteriaBuilder.equal(root.get("schedule.id"), filter.getScheduleId()));
+                        criteriaBuilder.equal(root.get("schedule").get("id"), filter.getScheduleId()));
             }
             if (filter.getSlotType() != null) {
                 specificationPredicates.add((root, query, criteriaBuilder) ->
@@ -70,11 +70,11 @@ public class PeriodServiceImpl implements PeriodService {
             }
             if (filter.getAdministratorId() != null) {
                 specificationPredicates.add((root, query, criteriaBuilder) ->
-                        criteriaBuilder.equal(root.get("administrator.id"), filter.getAdministratorId()));
+                        criteriaBuilder.equal(root.get("administrator").get("id"), filter.getAdministratorId()));
             }
             if (filter.getExecutorId() != null) {
                 specificationPredicates.add((root, query, criteriaBuilder) ->
-                        criteriaBuilder.equal(root.get("executor.id"), filter.getExecutorId()));
+                        criteriaBuilder.equal(root.get("executor").get("id"), filter.getExecutorId()));
             }
         }
 
