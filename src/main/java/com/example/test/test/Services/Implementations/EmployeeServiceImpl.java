@@ -27,7 +27,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public Employee getById(UUID id) throws NotFoundException {
+    public Employee getById(String id) throws NotFoundException {
         Optional<Employee> employee = employeeRepository.findById(id);
         if(employee.isPresent()){
             return employee.get();

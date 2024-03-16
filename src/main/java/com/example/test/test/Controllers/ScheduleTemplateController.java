@@ -28,7 +28,7 @@ public class ScheduleTemplateController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ScheduleTemplate> getTemplateById(@PathVariable UUID id) throws NotFoundException {
+    public ResponseEntity<ScheduleTemplate> getTemplateById(@PathVariable String id) throws NotFoundException {
         return ResponseEntity.ok(scheduleTemplateService.getById(id));
     }
 

@@ -14,11 +14,11 @@ public interface PeriodService {
 
     Period createPeriod(Period period);
 
-    Period getById(UUID id) throws NotFoundException;
+    Period getById(String id) throws NotFoundException;
 
     Page<Period> getAll(Specification<Period> specification, Pageable pageable);
 
 //    List<Period> getPeriods(PeriodFilter filter, Sort sort, Pageable pageable);
 
-//    void checkOverlapping();
+    //void checkOverlapping();
 }

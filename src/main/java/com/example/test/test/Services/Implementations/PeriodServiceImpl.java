@@ -4,10 +4,12 @@ import com.example.test.test.ExceptionsHandling.Exceptions.NotFoundException;
 import com.example.test.test.Models.DTOs.PeriodFilter;
 import com.example.test.test.Models.DTOs.PeriodSort;
 import com.example.test.test.Models.Entities.Period;
+import com.example.test.test.Models.Entities.Schedule;
 import com.example.test.test.Models.Entities.Slot;
 import com.example.test.test.Repositories.PeriodRepository;
 import com.example.test.test.Repositories.SlotRepository;
 import com.example.test.test.Services.PeriodService;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -15,6 +17,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -32,7 +35,7 @@ public class PeriodServiceImpl implements PeriodService {
     }
 
     @Override
-    public Period getById(UUID id) throws NotFoundException {
+    public Period getById(String id) throws NotFoundException {
         Optional<Period> period = periodRepository.findById(id);
         if(period.isPresent()){
             return period.get();
@@ -80,6 +83,28 @@ public class PeriodServiceImpl implements PeriodService {
 
         return Specification.allOf(specificationPredicates);
     }
+
+/*    @Transactional
+    public void checkOverlapping(Period period) {
+        Schedule schedule = period.getSchedule();
+        List<Period> existingPeriods = periodRepository.findAllBySchedule(schedule);
+        for (Period existingPeriod : existingPeriods) {
+            if (period.getId() == null || !period.getId().equals(existingPeriod.getId())) {
+                if (isOverlapping(period, existingPeriod)) {
+                    throw new OverlappingPeriodException("New period overlaps with existing one");
+                }
+            }
+        }
+    }
+
+    private boolean isOverlapping(Period period1, Period period2) {
+        LocalTime startTime1 = period1.getBeginTime();
+        LocalTime endTime1 = period1.getEndTime();
+        LocalTime startTime2 = period2.getBeginTime();
+        LocalTime endTime2 = period2.getEndTime();
+
+        return (startTime1.isBefore(endTime2) && endTime1.isAfter(startTime2));
+    }*/
 
 //    public Sort buildSort(PeriodSort sort) {
 //

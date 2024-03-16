@@ -10,5 +10,5 @@ public interface ScheduleTemplateService {
 
     ScheduleTemplate createTemplate(ScheduleTemplate scheduleTemplate);
 
-    ScheduleTemplate getById(UUID id) throws NotFoundException;
+    ScheduleTemplate getById(String id) throws NotFoundException;
 }

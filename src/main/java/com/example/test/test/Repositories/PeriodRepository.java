@@ -13,7 +13,7 @@ import org.springframework.data.web.PageableDefault;
 
 import java.util.UUID;
 
-public interface PeriodRepository extends JpaRepository<Period, UUID>, JpaSpecificationExecutor<Period> {
+public interface PeriodRepository extends JpaRepository<Period, String>, JpaSpecificationExecutor<Period> {
 
 //    public Page<Period> findAll(
 //            @PageableDefault(size = 20) Pageable pageable

@@ -27,7 +27,7 @@ public class SlotController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Slot> getSlotById(@PathVariable UUID id) throws NotFoundException {
+    public ResponseEntity<Slot> getSlotById(@PathVariable String id) throws NotFoundException {
         return ResponseEntity.ok(slotService.getById(id));
     }
 

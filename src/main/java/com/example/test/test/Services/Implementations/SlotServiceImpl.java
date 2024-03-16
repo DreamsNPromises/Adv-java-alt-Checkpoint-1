@@ -22,7 +22,7 @@ public class SlotServiceImpl implements SlotService {
     }
 
     @Override
-    public Slot getById(UUID id) throws NotFoundException {
+    public Slot getById(String id) throws NotFoundException {
         Optional<Slot> slot = slotRepository.findById(id);
         if(slot.isPresent()){
             return slot.get();

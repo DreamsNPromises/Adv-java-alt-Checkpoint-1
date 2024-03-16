@@ -32,7 +32,7 @@ public class ScheduleServiceImpl implements ScheduleService {
     }
 
     @Override
-    public Schedule getScheduleById(UUID id) {
+    public Schedule getScheduleById(String id) {
         Optional<Schedule> optionalSchedule = scheduleRepository.findById(id);
         return optionalSchedule.orElse(null);
     }

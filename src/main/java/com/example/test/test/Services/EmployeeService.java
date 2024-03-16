@@ -9,5 +9,5 @@ public interface EmployeeService {
 
     Employee createEmployee(Employee employee);
 
-    Employee getById(UUID id) throws NotFoundException;
+    Employee getById(String id) throws NotFoundException;
 }

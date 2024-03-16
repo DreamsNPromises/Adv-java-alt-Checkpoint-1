@@ -3,6 +3,7 @@ package com.example.test.test.Controllers;
 import com.example.test.test.ExceptionsHandling.Exceptions.NotFoundException;
 import com.example.test.test.Models.DTOs.PeriodFilter;
 import com.example.test.test.Models.DTOs.PeriodSort;
+import com.example.test.test.Models.DTOs.PeriodsResponse;
 import com.example.test.test.Models.Entities.Period;
 import com.example.test.test.Models.Enums.SlotType;
 import com.example.test.test.Services.Implementations.PeriodServiceImpl;
@@ -35,12 +36,12 @@ public class PeriodController {
     }
 
     @GetMapping("/period/{id}")
-    public ResponseEntity<Period> getPeriodById(@PathVariable UUID id) throws NotFoundException {
+    public ResponseEntity<Period> getPeriodById(@PathVariable String id) throws NotFoundException {
         return ResponseEntity.ok(periodService.getById(id));
     }
 
     @GetMapping("/periods")
-    public ResponseEntity<Page<Period>> getPeriods(
+    public ResponseEntity<PeriodsResponse> getPeriods(
             @RequestParam(name = "filter.id", required = false) String id,
             @RequestParam(name = "filter.slotId", required = false) String slotId,
             @RequestParam(name = "filter.scheduleId", required = false) String scheduleId,
@@ -64,7 +65,9 @@ public class PeriodController {
 
         Page<Period> page = periodService.getAll(specification, pageable);
 
-        return ResponseEntity.ok(page);
+        PeriodsResponse response = new PeriodsResponse(page.getContent(), page.getNumber(), page.getSize(), page.getTotalElements());
+
+        return ResponseEntity.ok(response);
     }
 
 }

@@ -8,7 +8,7 @@ public interface ScheduleService {
 
     Schedule createSchedule(Schedule schedule);
 
-    Schedule getScheduleById(UUID id);
+    Schedule getScheduleById(String id);
 
     //List<Period> getPeriods(PeriodFilter filter, Sort sort, Pageable pageable);
 

@@ -25,7 +25,7 @@ public class EmployeeController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Employee> getEmployeeById(@PathVariable UUID id) throws NotFoundException {
+    public ResponseEntity<Employee> getEmployeeById(@PathVariable String id) throws NotFoundException {
         return ResponseEntity.ok(employeeService.getById(id));
     }
 

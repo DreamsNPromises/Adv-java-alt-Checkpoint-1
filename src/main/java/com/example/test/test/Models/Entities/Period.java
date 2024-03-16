@@ -30,12 +30,6 @@ public class Period {
     @Column(name = "slot_type", nullable = false)
     private SlotType slotType;
 
-    @Column(name = "begin_time", nullable = false)
-    private LocalTime beginTime;
-
-    @Column(name = "end_time", nullable = false)
-    private LocalTime endTime;
-
     // Связанные сущности
     @ManyToOne
     @JoinColumn(name = "slot_id", nullable = false)

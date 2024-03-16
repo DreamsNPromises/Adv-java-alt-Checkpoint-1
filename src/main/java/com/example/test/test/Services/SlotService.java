@@ -10,6 +10,6 @@ public interface SlotService {
 
     Slot createSlot(Slot slot);
 
-    Slot getById(UUID id) throws NotFoundException;
+    Slot getById(String id) throws NotFoundException;
 
 }
