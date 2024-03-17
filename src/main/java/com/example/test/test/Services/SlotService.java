@@ -8,7 +8,7 @@ import java.util.UUID;
 
 public interface SlotService {
 
-    Slot createSlot(Slot slot);
+    Slot createSlot(Slot slot) throws NotFoundException;
 
     Slot getById(String id) throws NotFoundException;
 

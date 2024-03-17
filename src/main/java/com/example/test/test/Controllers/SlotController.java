@@ -22,7 +22,7 @@ public class SlotController {
 
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
-    public Slot createSlot(@RequestBody @Validated Slot slot) {
+    public Slot createSlot(@RequestBody @Validated Slot slot) throws NotFoundException {
         return slotService.createSlot(slot);
     }
 

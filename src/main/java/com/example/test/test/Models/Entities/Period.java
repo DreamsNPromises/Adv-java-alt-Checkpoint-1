@@ -4,6 +4,9 @@ import com.example.test.test.Models.Enums.SlotType;
 import com.example.test.test.Utils.UUIDConverter;
 import jakarta.persistence.*;
 import lombok.Data;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 
 import java.time.LocalTime;
 import java.util.UUID;
@@ -33,6 +36,7 @@ public class Period {
     // Связанные сущности
     @ManyToOne
     @JoinColumn(name = "slot_id", nullable = false)
+    //@NotFound(action = NotFoundAction.EXCEPTION)
     private Slot slot;
 
     @ManyToOne

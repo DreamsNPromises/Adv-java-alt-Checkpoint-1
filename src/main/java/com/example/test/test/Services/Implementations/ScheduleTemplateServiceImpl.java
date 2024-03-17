@@ -33,6 +33,7 @@ public class ScheduleTemplateServiceImpl implements ScheduleTemplateService {
     @Override
     public ScheduleTemplate getById(String id) throws NotFoundException {
         Optional<ScheduleTemplate> scheduleTemplate = scheduleTemplateRepository.findById(id);
+
         if(scheduleTemplate.isPresent()){
             return scheduleTemplate.get();
         }else{

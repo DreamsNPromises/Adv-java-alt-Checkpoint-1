@@ -1,6 +1,8 @@
 package com.example.test.test.ExceptionsHandling;
 
 import com.example.test.test.ExceptionsHandling.Exceptions.NotFoundException;
+import com.example.test.test.ExceptionsHandling.Exceptions.OverlappingPeriodsException;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -33,4 +35,12 @@ public class ApplicationExceptionHandler {
         return errorMap;
     }
 
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    @ExceptionHandler(OverlappingPeriodsException.class)
+    public Map<String, Object> handleBusinessException(OverlappingPeriodsException ex) {
+        Map<String, Object> errorMap = new HashMap<>();
+        errorMap.put("status", HttpStatus.CONFLICT.value());
+        errorMap.put("message", ex.getMessage());
+        return errorMap;
+    }
 }
