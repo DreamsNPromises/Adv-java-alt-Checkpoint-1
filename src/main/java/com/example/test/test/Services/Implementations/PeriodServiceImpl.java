@@ -120,6 +120,7 @@ public class PeriodServiceImpl implements PeriodService {
         return Specification.allOf(specificationPredicates);
     }
 
+    //Проверяем, пересекается ли время слотов у периодов данного executor в данном schedule
     @Transactional
     public void checkOverlapping(Period period) throws OverlappingPeriodsException {
         Employee executor = period.getExecutor();

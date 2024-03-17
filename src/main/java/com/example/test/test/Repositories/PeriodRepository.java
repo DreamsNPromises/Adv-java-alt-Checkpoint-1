@@ -16,8 +16,6 @@ public interface PeriodRepository extends JpaRepository<Period, String>, JpaSpec
 
     Page<Period> findAll(Specification<Period> specification, Pageable pageable);
 
-    List<Period> findAllBySchedule(Schedule schedule);
-
     List<Period> findAllByExecutorAndSchedule(Employee executor, Schedule schedule);
 
     List<Period> findBySlot(Slot slot);
