@@ -1,11 +1,9 @@
 package com.example.test.test.Services.Implementations;
 
 import com.example.test.test.ExceptionsHandling.Exceptions.NotFoundException;
-import com.example.test.test.Models.Entities.Employee;
-import com.example.test.test.Models.Entities.Schedule;
+import com.example.test.test.ExceptionsHandling.Exceptions.TimeRangeException;
 import com.example.test.test.Models.Entities.ScheduleTemplate;
 import com.example.test.test.Models.Entities.Slot;
-import com.example.test.test.Repositories.ScheduleRepository;
 import com.example.test.test.Repositories.ScheduleTemplateRepository;
 import com.example.test.test.Repositories.SlotRepository;
 import com.example.test.test.Services.SlotService;
@@ -13,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
-import java.util.UUID;
 
 @Service
 public class SlotServiceImpl implements SlotService {
@@ -24,11 +21,15 @@ public class SlotServiceImpl implements SlotService {
     private ScheduleTemplateRepository scheduleTemplateRepository;
 
     @Override
-    public Slot createSlot(Slot slot) throws NotFoundException {
+    public Slot createSlot(Slot slot) throws NotFoundException, TimeRangeException {
         ScheduleTemplate scheduleTemplate = scheduleTemplateRepository.findById(slot.getTemplate().getId())
                 .orElseThrow(() -> new NotFoundException("Slot with id " + slot.getTemplate().getId() + " not exist"));
 
         slot.setTemplate(scheduleTemplate);
+
+        if(slot.getEndTime().isBefore(slot.getBeginTime())){
+            throw new TimeRangeException("The begin time must be less than the end time of the slot");
+        }
 
         return slotRepository.save(slot);
     }

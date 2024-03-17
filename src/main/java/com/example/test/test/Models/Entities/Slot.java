@@ -1,7 +1,6 @@
 package com.example.test.test.Models.Entities;
 
 import com.example.test.test.Utils.UUIDConverter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 

@@ -3,15 +3,12 @@ package com.example.test.test.Controllers;
 import com.example.test.test.ExceptionsHandling.Exceptions.NotFoundException;
 import com.example.test.test.ExceptionsHandling.Exceptions.OverlappingPeriodsException;
 import com.example.test.test.Models.DTOs.PeriodFilter;
-import com.example.test.test.Models.DTOs.PeriodSort;
 import com.example.test.test.Models.DTOs.PeriodsResponse;
 import com.example.test.test.Models.Entities.Period;
 import com.example.test.test.Models.Enums.SlotType;
 import com.example.test.test.Models.Enums.SortDirection;
 import com.example.test.test.Models.Enums.SortField;
 import com.example.test.test.Services.Implementations.PeriodServiceImpl;
-import jakarta.annotation.Nullable;
-import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -25,8 +22,6 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalTime;
-import java.util.List;
-import java.util.UUID;
 
 @RestController
 @RequestMapping("/api")

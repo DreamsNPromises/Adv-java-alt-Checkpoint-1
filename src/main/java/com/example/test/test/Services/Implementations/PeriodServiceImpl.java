@@ -52,6 +52,9 @@ public class PeriodServiceImpl implements PeriodService {
                     .orElseThrow(() -> new NotFoundException("Executor with id " + period.getExecutor().getId() + " not exist"));
             period.setExecutor(executor);
         }
+        else {
+            period.setExecutor(administrator);
+        }
 
         period.setSlot(slot);
         period.setSchedule(schedule);
@@ -119,8 +122,11 @@ public class PeriodServiceImpl implements PeriodService {
 
     @Transactional
     public void checkOverlapping(Period period) throws OverlappingPeriodsException {
+        Employee executor = period.getExecutor();
         Schedule schedule = period.getSchedule();
-        List<Period> existingPeriods = periodRepository.findAllBySchedule(schedule);
+
+        List<Period> existingPeriods = periodRepository.findAllByExecutorAndSchedule(executor, schedule);
+
         for (Period existingPeriod : existingPeriods) {
             if (period.getId() == null || !period.getId().equals(existingPeriod.getId())) {
                 if (isOverlapping(period, existingPeriod)) {
@@ -151,20 +157,5 @@ public class PeriodServiceImpl implements PeriodService {
 
         return false;
     }
-
-//    // Метод для сохранения периода с проверкой на перекрытие
-//    public Period savePeriodWithOverlapCheck(Period period) throws OverlappingPeriodException {
-//        // Получаем слот, для которого сохраняется период
-//        Slot slot = period.getSlot();
-//
-//        // Проверяем, есть ли перекрывающиеся периоды
-//        if (hasOverlappingPeriods(slot, period.getBeginTime(), period.getEndTime())) {
-//            // Если есть перекрытия, выбрасываем исключение
-//            throw new OverlappingPeriodException("Перекрывающиеся периоды недопустимы.");
-//        }
-//
-//        // Если перекрытий нет, сохраняем период и возвращаем его
-//        return periodRepository.save(period);
-//    }
 
 }

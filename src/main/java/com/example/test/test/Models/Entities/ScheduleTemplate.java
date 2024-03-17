@@ -30,11 +30,6 @@ public class ScheduleTemplate {
     @Column(name = "creation_date", nullable = false)
     private LocalDateTime creationDate;
 
-    // Связанные сущности
-    @ManyToOne
-    @JoinColumn(name = "schedule_id", nullable = false)
-    private Schedule schedule;
-
     @JsonIgnore
     @OneToMany(mappedBy = "template")
     private List<Slot> slots;

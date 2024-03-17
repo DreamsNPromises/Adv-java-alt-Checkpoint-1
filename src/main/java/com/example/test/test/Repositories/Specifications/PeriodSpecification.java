@@ -8,7 +8,6 @@ import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Predicate;
 import jakarta.persistence.criteria.Root;
 import org.springframework.data.jpa.domain.Specification;
-import org.springframework.lang.NonNullApi;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,13 +26,10 @@ public class PeriodSpecification implements Specification<Period> {
     public Predicate toPredicate(Root<Period> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {
         List<Predicate> predicates = new ArrayList<>();
 
-        // Пример фильтрации по полю id
         if (filter.getId() != null) {
             predicates.add(criteriaBuilder.equal(root.get("id"), filter.getId()));
         }
-        // Добавьте другие условия фильтрации по необходимости
 
-        // Пример сортировки
         if (sort != null && sort.getField() != null && sort.getDirection() != null) {
             if (sort.getDirection().equals("ASC")) {
                 query.orderBy(criteriaBuilder.asc(root.get(String.valueOf(sort.getField()))));

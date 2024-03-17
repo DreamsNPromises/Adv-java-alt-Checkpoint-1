@@ -1,8 +1,9 @@
 package com.example.test.test.ExceptionsHandling;
 
 import com.example.test.test.ExceptionsHandling.Exceptions.NotFoundException;
+import com.example.test.test.ExceptionsHandling.Exceptions.NullRequestForSearch;
 import com.example.test.test.ExceptionsHandling.Exceptions.OverlappingPeriodsException;
-import jakarta.persistence.EntityNotFoundException;
+import com.example.test.test.ExceptionsHandling.Exceptions.TimeRangeException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -11,7 +12,6 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 @RestControllerAdvice
 public class ApplicationExceptionHandler {
@@ -38,6 +38,24 @@ public class ApplicationExceptionHandler {
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler(OverlappingPeriodsException.class)
     public Map<String, Object> handleBusinessException(OverlappingPeriodsException ex) {
+        Map<String, Object> errorMap = new HashMap<>();
+        errorMap.put("status", HttpStatus.CONFLICT.value());
+        errorMap.put("message", ex.getMessage());
+        return errorMap;
+    }
+
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    @ExceptionHandler(NullRequestForSearch.class)
+    public Map<String, Object> handleBusinessException(NullRequestForSearch ex) {
+        Map<String, Object> errorMap = new HashMap<>();
+        errorMap.put("status", HttpStatus.CONFLICT.value());
+        errorMap.put("message", ex.getMessage());
+        return errorMap;
+    }
+
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    @ExceptionHandler(TimeRangeException.class)
+    public Map<String, Object> handleBusinessException(TimeRangeException ex) {
         Map<String, Object> errorMap = new HashMap<>();
         errorMap.put("status", HttpStatus.CONFLICT.value());
         errorMap.put("message", ex.getMessage());

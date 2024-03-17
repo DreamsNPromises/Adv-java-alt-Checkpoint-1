@@ -1,10 +1,7 @@
 package com.example.test.test.Services.Implementations;
 
 import com.example.test.test.ExceptionsHandling.Exceptions.NotFoundException;
-import com.example.test.test.Models.Entities.Employee;
-import com.example.test.test.Models.Entities.Schedule;
 import com.example.test.test.Models.Entities.ScheduleTemplate;
-import com.example.test.test.Repositories.EmployeeRepository;
 import com.example.test.test.Repositories.ScheduleTemplateRepository;
 import com.example.test.test.Services.ScheduleTemplateService;
 import jakarta.transaction.Transactional;
@@ -13,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.Optional;
-import java.util.UUID;
 
 @Service
 public class ScheduleTemplateServiceImpl implements ScheduleTemplateService {

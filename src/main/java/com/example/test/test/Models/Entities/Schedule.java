@@ -1,7 +1,7 @@
 package com.example.test.test.Models.Entities;
 
 import com.example.test.test.Utils.UUIDConverter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -33,13 +33,8 @@ public class Schedule {
     @Column(name = "creation_date", nullable = false)
     private LocalDateTime creationDate;
 
-    // Связанные сущности
-    @JsonIgnore
     @OneToMany(mappedBy = "schedule")
-    private List<ScheduleTemplate> templates;
-
-    @JsonIgnore
-    @OneToMany(mappedBy = "schedule")
+    @JsonIgnoreProperties("schedule")
     private List<Period> periods;
 
 }

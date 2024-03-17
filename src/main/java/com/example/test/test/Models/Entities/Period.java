@@ -2,13 +2,10 @@ package com.example.test.test.Models.Entities;
 
 import com.example.test.test.Models.Enums.SlotType;
 import com.example.test.test.Utils.UUIDConverter;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Data;
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.NotFound;
-import org.hibernate.annotations.NotFoundAction;
 
-import java.time.LocalTime;
 import java.util.UUID;
 
 @Entity
@@ -33,14 +30,13 @@ public class Period {
     @Column(name = "slot_type", nullable = false)
     private SlotType slotType;
 
-    // Связанные сущности
     @ManyToOne
     @JoinColumn(name = "slot_id", nullable = false)
-    //@NotFound(action = NotFoundAction.EXCEPTION)
     private Slot slot;
 
     @ManyToOne
     @JoinColumn(name = "schedule_id", nullable = false)
+    @JsonIgnoreProperties("periods")
     private Schedule schedule;
 
     @ManyToOne
